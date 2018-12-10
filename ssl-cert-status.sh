@@ -9,4 +9,4 @@ else
     port=443
 fi
 
-tools/ssl-cert-check/ssl-cert-check -s ${host} -p ${port} -n | awk '{ print $2 }' | grep -iE "valid|Expiring" | wc -l | sed 's/[^0-9]//g'
+/usr/local/etc/zabbix/zabbix/externalscripts/tools/ssl-cert-check/ssl-cert-check -s ${host} -p ${port} -n | awk '{ print $2 }' | grep -iE "valid|Expiring" | wc -l | sed 's/[^0-9]//g'

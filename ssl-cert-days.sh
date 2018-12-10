@@ -9,4 +9,4 @@ else
     port=443
 fi
 
-tools/ssl-cert-check/ssl-cert-check -s ${host} -p ${port} -n | cut -d '=' -f2
+/usr/local/etc/zabbix/zabbix/externalscripts/tools/ssl-cert-check/ssl-cert-check -s ${host} -p ${port} -n | cut -d '=' -f2
