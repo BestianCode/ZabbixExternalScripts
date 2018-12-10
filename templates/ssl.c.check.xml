@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>4.0</version>
-    <date>2018-12-10T21:47:24Z</date>
+    <date>2018-12-10T21:52:44Z</date>
     <groups>
         <group>
             <name>Templates</name>
@@ -227,7 +227,7 @@
                     <snmp_community/>
                     <snmp_oid/>
                     <key>sslCheck.py[-d,&quot;{HOST.DNS}&quot;,-p,{$HOST.SSL.PORT}]</key>
-                    <delay>30s</delay>
+                    <delay>30m</delay>
                     <history>90d</history>
                     <trends>0</trends>
                     <status>0</status>
