@@ -2,7 +2,8 @@
 
 * `cloudWatch.py`
 
-* *Templates:*
+*Templates:*  
+
 * `templates/AWS/aws.ec2.xml`
 * `templates/AWS/aws.ecs.xml`
 * `templates/AWS/aws.elb.application.xml`
@@ -12,10 +13,11 @@
 * `templates/AWS/aws.sqs.xml`
 
 ## Requirements:
+
  * Python >= 3.5
  * Boto3 library >= 1.9.45
 
-## Script usage
+## Script usage:
 
 ### Help:
 
@@ -169,23 +171,18 @@
 
 * {$SQSNAME} - Name of the sqs queue or part of the name: "queue-xxx-dev-yyy" or just "dev"
 
-# Additional templates:
-
-## Testing alets
-
-* `templates/SendTestAlert.xml` - Periodic sending testing alerts.
-
-## Check SSL Certificates
+# Check SSL Certificates
 
 * `sslCheck.py`
 
-* *Templates:*
+*Templates:*  
+
 * `templates/ssl.c.check.xml`
 
 ## Requirements:
  * Python >= 3.5
 
-## Script usage
+## Script usage:
 
 ### Help:
 
@@ -195,3 +192,8 @@
      -d - DNS Name of the server
      -p - port number
 ~~~
+
+# Testing alets
+
+* `templates/SendTestAlert.xml` - Periodic sending testing alerts.
+
