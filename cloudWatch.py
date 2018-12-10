@@ -43,7 +43,7 @@ awsQuery = ""
 namePrefix = ""
 awsAdditional = ""
 
-appVersion = "2018.12.10.01"
+appVersion = "2018.12.10.02"
 
 rdsMetrics = ["CPUUtilization","FreeableMemory","FreeStorageSpace","SwapUsage","WriteThroughput","ReadThroughput","WriteLatency","ReadLatency","DiskQueueDepth","CPUCreditBalance","CPUCreditUsage","DatabaseConnections","ReadIOPS","WriteIOPS","BurstBalance"]
 ec2Metrics = ["CPUUtilization","CPUCreditBalance","CPUCreditUsage","NetworkIn","NetworkOut"]
@@ -62,7 +62,7 @@ tgMetrics               = ["RequestCountPerTarget","RequestCount","TargetRespons
 def about(exitCode=0,additionalMessage=""):
     print(" \
 \n \
-Copyright (c) 2018, Oleg Smirnov <oleg@tula.co>.\n \
+Copyright (c) 2018, Oleg Smirnov <oleg.a.smirnov@gmail.com>.\n \
 Simplified BSD License or FreeBSD License.\n \
 v",appVersion,"\n \
 \n \

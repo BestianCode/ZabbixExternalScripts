@@ -1,5 +1,16 @@
 # Amazon AWS (EC2, RDS, ECS, ELB, S3, SQS and CloudWatch) Monitoring script!
 
+* `cloudWatch.py`
+
+* *Templates:*
+* `templates/AWS/aws.ec2.xml`
+* `templates/AWS/aws.ecs.xml`
+* `templates/AWS/aws.elb.application.xml`
+* `templates/AWS/aws.elb.classic.xml`
+* `templates/AWS/aws.rds.xml`
+* `templates/AWS/aws.s3.backups.xml`
+* `templates/AWS/aws.sqs.xml`
+
 ## Requirements:
  * Python >= 3.5
  * Boto3 library >= 1.9.45
@@ -166,6 +177,21 @@
 
 ## Check SSL Certificates
 
-* `ssl-cert-days.sh <DNSHostName> [Port]` - Check of a number of the days until SSL Certificate expiration.
-* `ssl-cert-status.sh <DNSHostName> [Port]` - Validate SSL Certifilate. 1 - is valid, 0 - is invalid.
-* `templates/ssl.c.check.xml` - template
+* `sslCheck.py`
+
+* *Templates:*
+* `templates/ssl.c.check.xml`
+
+## Requirements:
+ * Python >= 3.5
+
+## Script usage
+
+### Help:
+
+~~~
+ ./sslCheck.py -d <dnsname> [-p port]
+ 
+     -d - DNS Name of the server
+     -p - port number
+~~~

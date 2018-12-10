@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
-    <version>3.4</version>
-    <date>2018-11-25T20:49:30Z</date>
+    <version>4.0</version>
+    <date>2018-12-10T21:19:00Z</date>
     <groups>
         <group>
             <name>Templates</name>
@@ -9,8 +9,8 @@
     </groups>
     <templates>
         <template>
-            <template>OS SSL.C.Check</template>
-            <name>OS SSL.C.Check</name>
+            <template>OS SSL.Certs.Check</template>
+            <name>OS SSL.Certs.Check</name>
             <description/>
             <groups>
                 <group>
@@ -24,16 +24,16 @@
             </applications>
             <items>
                 <item>
-                    <name>SSL.C.Check.Days</name>
-                    <type>10</type>
+                    <name>SSL.C.Check.Date</name>
+                    <type>18</type>
                     <snmp_community/>
                     <snmp_oid/>
-                    <key>ssl-cert-days.sh[&quot;{HOST.DNS}&quot;,&quot;{HOST.SSL.PORT}&quot;]</key>
-                    <delay>1h</delay>
+                    <key>SSL.C.Check.Date</key>
+                    <delay>0</delay>
                     <history>90d</history>
-                    <trends>365d</trends>
+                    <trends>0</trends>
                     <status>0</status>
-                    <value_type>3</value_type>
+                    <value_type>4</value_type>
                     <allowed_hosts/>
                     <units/>
                     <snmpv3_contextname/>
@@ -60,17 +60,42 @@
                     </applications>
                     <valuemap/>
                     <logtimefmt/>
-                    <preprocessing/>
+                    <preprocessing>
+                        <step>
+                            <type>12</type>
+                            <params>$.date</params>
+                        </step>
+                    </preprocessing>
                     <jmx_endpoint/>
-                    <master_item/>
+                    <timeout>3s</timeout>
+                    <url/>
+                    <query_fields/>
+                    <posts/>
+                    <status_codes>200</status_codes>
+                    <follow_redirects>1</follow_redirects>
+                    <post_type>0</post_type>
+                    <http_proxy/>
+                    <headers/>
+                    <retrieve_mode>0</retrieve_mode>
+                    <request_method>0</request_method>
+                    <output_format>0</output_format>
+                    <allow_traps>0</allow_traps>
+                    <ssl_cert_file/>
+                    <ssl_key_file/>
+                    <ssl_key_password/>
+                    <verify_peer>0</verify_peer>
+                    <verify_host>0</verify_host>
+                    <master_item>
+                        <key>sslCheck.py[-d,&quot;{HOST.DNS}&quot;,-p,{HOST.SSL.PORT}]</key>
+                    </master_item>
                 </item>
                 <item>
-                    <name>SSL.C.Check.Status</name>
-                    <type>10</type>
+                    <name>SSL.C.Check.Days</name>
+                    <type>18</type>
                     <snmp_community/>
                     <snmp_oid/>
-                    <key>ssl-cert-status.sh[&quot;{HOST.DNS}&quot;,&quot;{HOST.SSL.PORT}&quot;]</key>
-                    <delay>10m</delay>
+                    <key>SSL.C.Check.Days</key>
+                    <delay>0</delay>
                     <history>90d</history>
                     <trends>365d</trends>
                     <status>0</status>
@@ -101,8 +126,158 @@
                     </applications>
                     <valuemap/>
                     <logtimefmt/>
+                    <preprocessing>
+                        <step>
+                            <type>12</type>
+                            <params>$.days</params>
+                        </step>
+                    </preprocessing>
+                    <jmx_endpoint/>
+                    <timeout>3s</timeout>
+                    <url/>
+                    <query_fields/>
+                    <posts/>
+                    <status_codes>200</status_codes>
+                    <follow_redirects>1</follow_redirects>
+                    <post_type>0</post_type>
+                    <http_proxy/>
+                    <headers/>
+                    <retrieve_mode>0</retrieve_mode>
+                    <request_method>0</request_method>
+                    <output_format>0</output_format>
+                    <allow_traps>0</allow_traps>
+                    <ssl_cert_file/>
+                    <ssl_key_file/>
+                    <ssl_key_password/>
+                    <verify_peer>0</verify_peer>
+                    <verify_host>0</verify_host>
+                    <master_item>
+                        <key>sslCheck.py[-d,&quot;{HOST.DNS}&quot;,-p,{HOST.SSL.PORT}]</key>
+                    </master_item>
+                </item>
+                <item>
+                    <name>SSL.C.Check.Serial</name>
+                    <type>18</type>
+                    <snmp_community/>
+                    <snmp_oid/>
+                    <key>SSL.C.Check.Serial</key>
+                    <delay>0</delay>
+                    <history>90d</history>
+                    <trends>0</trends>
+                    <status>0</status>
+                    <value_type>4</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description/>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>SSL.C.Check</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                    <logtimefmt/>
+                    <preprocessing>
+                        <step>
+                            <type>12</type>
+                            <params>$.serial</params>
+                        </step>
+                    </preprocessing>
+                    <jmx_endpoint/>
+                    <timeout>3s</timeout>
+                    <url/>
+                    <query_fields/>
+                    <posts/>
+                    <status_codes>200</status_codes>
+                    <follow_redirects>1</follow_redirects>
+                    <post_type>0</post_type>
+                    <http_proxy/>
+                    <headers/>
+                    <retrieve_mode>0</retrieve_mode>
+                    <request_method>0</request_method>
+                    <output_format>0</output_format>
+                    <allow_traps>0</allow_traps>
+                    <ssl_cert_file/>
+                    <ssl_key_file/>
+                    <ssl_key_password/>
+                    <verify_peer>0</verify_peer>
+                    <verify_host>0</verify_host>
+                    <master_item>
+                        <key>sslCheck.py[-d,&quot;{HOST.DNS}&quot;,-p,{HOST.SSL.PORT}]</key>
+                    </master_item>
+                </item>
+                <item>
+                    <name>SSL Get JSON</name>
+                    <type>10</type>
+                    <snmp_community/>
+                    <snmp_oid/>
+                    <key>sslCheck.py[-d,&quot;{HOST.DNS}&quot;,-p,{HOST.SSL.PORT}]</key>
+                    <delay>30m</delay>
+                    <history>90d</history>
+                    <trends>0</trends>
+                    <status>0</status>
+                    <value_type>4</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description/>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>SSL.C.Check</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                    <logtimefmt/>
                     <preprocessing/>
                     <jmx_endpoint/>
+                    <timeout>3s</timeout>
+                    <url/>
+                    <query_fields/>
+                    <posts/>
+                    <status_codes>200</status_codes>
+                    <follow_redirects>1</follow_redirects>
+                    <post_type>0</post_type>
+                    <http_proxy/>
+                    <headers/>
+                    <retrieve_mode>0</retrieve_mode>
+                    <request_method>0</request_method>
+                    <output_format>0</output_format>
+                    <allow_traps>0</allow_traps>
+                    <ssl_cert_file/>
+                    <ssl_key_file/>
+                    <ssl_key_password/>
+                    <verify_peer>0</verify_peer>
+                    <verify_host>0</verify_host>
                     <master_item/>
                 </item>
             </items>
@@ -115,42 +290,10 @@
     </templates>
     <triggers>
         <trigger>
-            <expression>{OS SSL.C.Check:ssl-cert-status.sh[&quot;{HOST.DNS}&quot;,&quot;{HOST.SSL.PORT}&quot;].last(#3)}&lt;&gt;1 or {OS SSL.C.Check:ssl-cert-status.sh[&quot;{HOST.DNS}&quot;,&quot;{HOST.SSL.PORT}&quot;].nodata(1800)}=1 or {OS SSL.C.Check:ssl-cert-days.sh[&quot;{HOST.DNS}&quot;,&quot;{HOST.SSL.PORT}&quot;].nodata(10800)}=1</expression>
+            <expression>{OS SSL.Certs.Check:SSL.C.Check.Days.last(#3)}&lt;3 or {OS SSL.Certs.Check:SSL.C.Check.Days.nodata(600)}=1</expression>
             <recovery_mode>0</recovery_mode>
             <recovery_expression/>
-            <name>The SSL Certificate ERROR on {HOST.NAME}</name>
-            <correlation_mode>0</correlation_mode>
-            <correlation_tag/>
-            <url/>
-            <status>0</status>
-            <priority>5</priority>
-            <description/>
-            <type>0</type>
-            <manual_close>0</manual_close>
-            <dependencies/>
-            <tags/>
-        </trigger>
-        <trigger>
-            <expression>{OS SSL.C.Check:ssl-cert-days.sh[&quot;{HOST.DNS}&quot;,&quot;{HOST.SSL.PORT}&quot;].last(#1)}&lt;2</expression>
-            <recovery_mode>0</recovery_mode>
-            <recovery_expression/>
-            <name>The SSL Certificate on {HOST.NAME} will be expired in 1 day</name>
-            <correlation_mode>0</correlation_mode>
-            <correlation_tag/>
-            <url/>
-            <status>0</status>
-            <priority>5</priority>
-            <description/>
-            <type>0</type>
-            <manual_close>0</manual_close>
-            <dependencies/>
-            <tags/>
-        </trigger>
-        <trigger>
-            <expression>{OS SSL.C.Check:ssl-cert-days.sh[&quot;{HOST.DNS}&quot;,&quot;{HOST.SSL.PORT}&quot;].last(#1)}&lt;6</expression>
-            <recovery_mode>0</recovery_mode>
-            <recovery_expression/>
-            <name>The SSL Certificate on {HOST.NAME} will be expired in 5 days</name>
+            <name>The SSL Certificate for {HOST.NAME} will be expired in 2 days</name>
             <correlation_mode>0</correlation_mode>
             <correlation_tag/>
             <url/>
@@ -163,10 +306,26 @@
             <tags/>
         </trigger>
         <trigger>
-            <expression>{OS SSL.C.Check:ssl-cert-days.sh[&quot;{HOST.DNS}&quot;,&quot;{HOST.SSL.PORT}&quot;].last(#1)}&lt;16</expression>
+            <expression>{OS SSL.Certs.Check:SSL.C.Check.Days.last(#3)}&lt;8 or {OS SSL.Certs.Check:SSL.C.Check.Days.nodata(600)}=1</expression>
             <recovery_mode>0</recovery_mode>
             <recovery_expression/>
-            <name>The SSL Certificate on {HOST.NAME} will be expired in 15 days</name>
+            <name>The SSL Certificate for {HOST.NAME} will be expired in 7 days</name>
+            <correlation_mode>0</correlation_mode>
+            <correlation_tag/>
+            <url/>
+            <status>0</status>
+            <priority>4</priority>
+            <description/>
+            <type>0</type>
+            <manual_close>0</manual_close>
+            <dependencies/>
+            <tags/>
+        </trigger>
+        <trigger>
+            <expression>{OS SSL.Certs.Check:SSL.C.Check.Days.last(#3)}&lt;16 or {OS SSL.Certs.Check:SSL.C.Check.Days.nodata(600)}=1</expression>
+            <recovery_mode>0</recovery_mode>
+            <recovery_expression/>
+            <name>The SSL Certificate for {HOST.NAME} will be expired in 15 days</name>
             <correlation_mode>0</correlation_mode>
             <correlation_tag/>
             <url/>
@@ -179,10 +338,10 @@
             <tags/>
         </trigger>
         <trigger>
-            <expression>{OS SSL.C.Check:ssl-cert-days.sh[&quot;{HOST.DNS}&quot;,&quot;{HOST.SSL.PORT}&quot;].last(#1)}&lt;31</expression>
+            <expression>{OS SSL.Certs.Check:SSL.C.Check.Days.last(#3)}&lt;31 or {OS SSL.Certs.Check:SSL.C.Check.Days.nodata(600)}=1</expression>
             <recovery_mode>0</recovery_mode>
             <recovery_expression/>
-            <name>The SSL Certificate on {HOST.NAME} will be expired in 30 days</name>
+            <name>The SSL Certificate for {HOST.NAME} will be expired in 30 days</name>
             <correlation_mode>0</correlation_mode>
             <correlation_tag/>
             <url/>
@@ -194,5 +353,87 @@
             <dependencies/>
             <tags/>
         </trigger>
+        <trigger>
+            <expression>{OS SSL.Certs.Check:SSL.C.Check.Date.strlen(#3)}&lt;20 or {OS SSL.Certs.Check:SSL.C.Check.Date.nodata(600)}=1</expression>
+            <recovery_mode>0</recovery_mode>
+            <recovery_expression/>
+            <name>The SSL Certificate get date ERROR for {HOST.NAME}</name>
+            <correlation_mode>0</correlation_mode>
+            <correlation_tag/>
+            <url/>
+            <status>0</status>
+            <priority>4</priority>
+            <description/>
+            <type>0</type>
+            <manual_close>0</manual_close>
+            <dependencies/>
+            <tags/>
+        </trigger>
+        <trigger>
+            <expression>{OS SSL.Certs.Check:SSL.C.Check.Serial.strlen(#3)}&lt;16 or {OS SSL.Certs.Check:SSL.C.Check.Serial.nodata(600)}=1</expression>
+            <recovery_mode>0</recovery_mode>
+            <recovery_expression/>
+            <name>The SSL Certificate serial number ERROR for {HOST.NAME}</name>
+            <correlation_mode>0</correlation_mode>
+            <correlation_tag/>
+            <url/>
+            <status>0</status>
+            <priority>4</priority>
+            <description/>
+            <type>0</type>
+            <manual_close>0</manual_close>
+            <dependencies/>
+            <tags/>
+        </trigger>
+        <trigger>
+            <expression>{OS SSL.Certs.Check:SSL.C.Check.Serial.strlen(#3)}&gt;14 and {OS SSL.Certs.Check:SSL.C.Check.Serial.prev()}&lt;&gt;{OS SSL.Certs.Check:SSL.C.Check.Serial.last(#1)}</expression>
+            <recovery_mode>0</recovery_mode>
+            <recovery_expression/>
+            <name>The SSL Certificate serial number was changed for {HOST.NAME}</name>
+            <correlation_mode>0</correlation_mode>
+            <correlation_tag/>
+            <url/>
+            <status>0</status>
+            <priority>4</priority>
+            <description/>
+            <type>0</type>
+            <manual_close>0</manual_close>
+            <dependencies/>
+            <tags/>
+        </trigger>
     </triggers>
+    <graphs>
+        <graph>
+            <name>SSL.C.Check.Days</name>
+            <width>900</width>
+            <height>200</height>
+            <yaxismin>0.0000</yaxismin>
+            <yaxismax>100.0000</yaxismax>
+            <show_work_period>1</show_work_period>
+            <show_triggers>1</show_triggers>
+            <type>0</type>
+            <show_legend>1</show_legend>
+            <show_3d>0</show_3d>
+            <percent_left>0.0000</percent_left>
+            <percent_right>0.0000</percent_right>
+            <ymin_type_1>0</ymin_type_1>
+            <ymax_type_1>0</ymax_type_1>
+            <ymin_item_1>0</ymin_item_1>
+            <ymax_item_1>0</ymax_item_1>
+            <graph_items>
+                <graph_item>
+                    <sortorder>0</sortorder>
+                    <drawtype>5</drawtype>
+                    <color>199C0D</color>
+                    <yaxisside>0</yaxisside>
+                    <calc_fnc>7</calc_fnc>
+                    <type>0</type>
+                    <item>
+                        <host>OS SSL.Certs.Check</host>
+                        <key>SSL.C.Check.Days</key>
+                    </item>
+                </graph_item>
+            </graph_items>
+        </graph>
+    </graphs>
 </zabbix_export>
