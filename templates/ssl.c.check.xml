@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>4.0</version>
-    <date>2018-12-10T21:19:00Z</date>
+    <date>2018-12-10T21:47:24Z</date>
     <groups>
         <group>
             <name>Templates</name>
@@ -86,7 +86,7 @@
                     <verify_peer>0</verify_peer>
                     <verify_host>0</verify_host>
                     <master_item>
-                        <key>sslCheck.py[-d,&quot;{HOST.DNS}&quot;,-p,{HOST.SSL.PORT}]</key>
+                        <key>sslCheck.py[-d,&quot;{HOST.DNS}&quot;,-p,{$HOST.SSL.PORT}]</key>
                     </master_item>
                 </item>
                 <item>
@@ -152,7 +152,7 @@
                     <verify_peer>0</verify_peer>
                     <verify_host>0</verify_host>
                     <master_item>
-                        <key>sslCheck.py[-d,&quot;{HOST.DNS}&quot;,-p,{HOST.SSL.PORT}]</key>
+                        <key>sslCheck.py[-d,&quot;{HOST.DNS}&quot;,-p,{$HOST.SSL.PORT}]</key>
                     </master_item>
                 </item>
                 <item>
@@ -218,7 +218,7 @@
                     <verify_peer>0</verify_peer>
                     <verify_host>0</verify_host>
                     <master_item>
-                        <key>sslCheck.py[-d,&quot;{HOST.DNS}&quot;,-p,{HOST.SSL.PORT}]</key>
+                        <key>sslCheck.py[-d,&quot;{HOST.DNS}&quot;,-p,{$HOST.SSL.PORT}]</key>
                     </master_item>
                 </item>
                 <item>
@@ -226,8 +226,8 @@
                     <type>10</type>
                     <snmp_community/>
                     <snmp_oid/>
-                    <key>sslCheck.py[-d,&quot;{HOST.DNS}&quot;,-p,{HOST.SSL.PORT}]</key>
-                    <delay>30m</delay>
+                    <key>sslCheck.py[-d,&quot;{HOST.DNS}&quot;,-p,{$HOST.SSL.PORT}]</key>
+                    <delay>30s</delay>
                     <history>90d</history>
                     <trends>0</trends>
                     <status>0</status>
@@ -283,7 +283,12 @@
             </items>
             <discovery_rules/>
             <httptests/>
-            <macros/>
+            <macros>
+                <macro>
+                    <macro>{$HOST.SSL.PORT}</macro>
+                    <value>443</value>
+                </macro>
+            </macros>
             <templates/>
             <screens/>
         </template>

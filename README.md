@@ -195,8 +195,8 @@
 
 ## Macro variables for zabbix hosts and templates
 
-* {HOST.DNS} - default is host dns name
-* {HOST.SSL.PORT} - default is 443
+* {HOST.DNS} - Predefined value in Zabbix.
+* {$HOST.SSL.PORT} - Macros. Default is 443
 
 # Testing alets
 
