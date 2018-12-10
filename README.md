@@ -162,10 +162,10 @@
 
 ## Testing alets
 
-* templates/SendTestAlert.xml - Periodic sending testing alerts.
+* `templates/SendTestAlert.xml` - Periodic sending testing alerts.
 
 ## Check SSL Certificates
 
-* ssl-cert-days.sh <DNSHostName> [Port] - Check of a number of the days until SSL Certificate expiration.
-* ssl-cert-status.sh <DNSHostName> [Port] - Validate SSL Certifilate. 1 - is valid, 0 - is invalid.
-* templates/ssl.c.check.xml - template
+* `ssl-cert-days.sh <DNSHostName> [Port]` - Check of a number of the days until SSL Certificate expiration.
+* `ssl-cert-status.sh <DNSHostName> [Port]` - Validate SSL Certifilate. 1 - is valid, 0 - is invalid.
+* `templates/ssl.c.check.xml` - template
