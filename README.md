@@ -193,6 +193,11 @@
      -p - port number
 ~~~
 
+## Macro variables for zabbix hosts and templates
+
+* {HOST.DNS} - default is host dns name
+* {HOST.SSL.PORT} - default is 443
+
 # Testing alets
 
 * `templates/SendTestAlert.xml` - Periodic sending testing alerts.
