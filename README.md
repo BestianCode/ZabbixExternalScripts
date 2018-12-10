@@ -158,3 +158,6 @@
 
 * {$SQSNAME} - Name of the sqs queue or part of the name: "queue-xxx-dev-yyy" or just "dev"
 
+# Additional templates:
+
+* templates/SendTestAlert.xml - Periodic sending testing alerts.
