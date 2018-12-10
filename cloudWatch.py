@@ -101,7 +101,7 @@ v",appVersion,"\n \
 		getLatestFiles		-a 'Bucket,Mask,DaysBack'\n \
 \n \
 	sqs\n \
-		getList			[-a 'Part of queue name']\n \
+		getList			[-a 'Part of a queue name']\n \
 		getInfo			-a 'QueueName'\n \
 \n \
 ",sep='')

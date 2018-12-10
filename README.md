@@ -26,7 +26,9 @@
 
     mode:	query:
 
-    ec2
+    mode:	query:
+
+     ec2
 	getList			[-a 'InstanceID' or -a 'name=InstanceName']
 	getInfo			-a 'InstanceID' or -a 'name=InstanceName'
 	getVolumesList		-a 'InstanceID' or -a 'name=InstanceName'
@@ -57,7 +59,7 @@
 	getLatestFiles		-a 'Bucket,Mask,DaysBack'
  
     sqs
-	getList			[-a 'QueueName']
+	getList			[-a 'Part of a queue name']
 	getInfo			-a 'QueueName'
 ~~~
 
