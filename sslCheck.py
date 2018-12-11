@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-#**************************** AWS cloud Monitor ******************************
+#**************************** SSL Certificates Monitor ******************************
 #*
 #*  Copyright (c) 2018, Oleg Smirnov <oleg.a.smirnov@gmail.com>
 #*  All rights reserved.
