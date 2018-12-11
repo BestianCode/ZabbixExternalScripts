@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>4.0</version>
-    <date>2018-12-10T21:52:44Z</date>
+    <date>2018-12-11T06:55:07Z</date>
     <groups>
         <group>
             <name>Templates</name>
@@ -295,7 +295,23 @@
     </templates>
     <triggers>
         <trigger>
-            <expression>{OS SSL.Certs.Check:SSL.C.Check.Days.last(#3)}&lt;3 or {OS SSL.Certs.Check:SSL.C.Check.Days.nodata(600)}=1</expression>
+            <expression>{OS SSL.Certs.Check:SSL.C.Check.Days.nodata(7200)}=1 or {OS SSL.Certs.Check:SSL.C.Check.Date.nodata(7200)}=1 or {OS SSL.Certs.Check:SSL.C.Check.Serial.nodata(7200)}=1</expression>
+            <recovery_mode>0</recovery_mode>
+            <recovery_expression/>
+            <name>The SSL Certificate for {HOST.NAME} cannot be checked</name>
+            <correlation_mode>0</correlation_mode>
+            <correlation_tag/>
+            <url/>
+            <status>0</status>
+            <priority>5</priority>
+            <description/>
+            <type>0</type>
+            <manual_close>0</manual_close>
+            <dependencies/>
+            <tags/>
+        </trigger>
+        <trigger>
+            <expression>{OS SSL.Certs.Check:SSL.C.Check.Days.last(#3)}&lt;3</expression>
             <recovery_mode>0</recovery_mode>
             <recovery_expression/>
             <name>The SSL Certificate for {HOST.NAME} will be expired in 2 days</name>
@@ -311,7 +327,7 @@
             <tags/>
         </trigger>
         <trigger>
-            <expression>{OS SSL.Certs.Check:SSL.C.Check.Days.last(#3)}&lt;8 or {OS SSL.Certs.Check:SSL.C.Check.Days.nodata(600)}=1</expression>
+            <expression>{OS SSL.Certs.Check:SSL.C.Check.Days.last(#3)}&lt;8</expression>
             <recovery_mode>0</recovery_mode>
             <recovery_expression/>
             <name>The SSL Certificate for {HOST.NAME} will be expired in 7 days</name>
@@ -327,7 +343,7 @@
             <tags/>
         </trigger>
         <trigger>
-            <expression>{OS SSL.Certs.Check:SSL.C.Check.Days.last(#3)}&lt;16 or {OS SSL.Certs.Check:SSL.C.Check.Days.nodata(600)}=1</expression>
+            <expression>{OS SSL.Certs.Check:SSL.C.Check.Days.last(#3)}&lt;16</expression>
             <recovery_mode>0</recovery_mode>
             <recovery_expression/>
             <name>The SSL Certificate for {HOST.NAME} will be expired in 15 days</name>
@@ -343,7 +359,7 @@
             <tags/>
         </trigger>
         <trigger>
-            <expression>{OS SSL.Certs.Check:SSL.C.Check.Days.last(#3)}&lt;31 or {OS SSL.Certs.Check:SSL.C.Check.Days.nodata(600)}=1</expression>
+            <expression>{OS SSL.Certs.Check:SSL.C.Check.Days.last(#3)}&lt;31</expression>
             <recovery_mode>0</recovery_mode>
             <recovery_expression/>
             <name>The SSL Certificate for {HOST.NAME} will be expired in 30 days</name>
@@ -359,7 +375,7 @@
             <tags/>
         </trigger>
         <trigger>
-            <expression>{OS SSL.Certs.Check:SSL.C.Check.Date.strlen(#3)}&lt;20 or {OS SSL.Certs.Check:SSL.C.Check.Date.nodata(600)}=1</expression>
+            <expression>{OS SSL.Certs.Check:SSL.C.Check.Date.strlen(#3)}&lt;20</expression>
             <recovery_mode>0</recovery_mode>
             <recovery_expression/>
             <name>The SSL Certificate get date ERROR for {HOST.NAME}</name>
@@ -375,7 +391,7 @@
             <tags/>
         </trigger>
         <trigger>
-            <expression>{OS SSL.Certs.Check:SSL.C.Check.Serial.strlen(#3)}&lt;16 or {OS SSL.Certs.Check:SSL.C.Check.Serial.nodata(600)}=1</expression>
+            <expression>{OS SSL.Certs.Check:SSL.C.Check.Serial.strlen(#3)}&lt;16</expression>
             <recovery_mode>0</recovery_mode>
             <recovery_expression/>
             <name>The SSL Certificate serial number ERROR for {HOST.NAME}</name>
