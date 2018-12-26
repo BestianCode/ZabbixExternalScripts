@@ -482,8 +482,6 @@ def awsExec(sess,mode,query,prefix,additional):
                         dateBackB=str(datetime.date.today() - datetime.timedelta(days=int(s3DateBack-1)))
                     else:
                         dateBackB=dateBackA
-                    print(s3Date,"==",dateBackA)
-                    print(s3Date,"==",dateBackB)
                     if s3Date == dateBackA or s3Date == dateBackB:
                         rDesc["count"]+=1
                         rDesc["size"]+=jdoc["Contents"][x]["Size"]
