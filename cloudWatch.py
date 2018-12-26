@@ -46,7 +46,7 @@ awsAdditional = ""
 appVersion = "2018.12.10.02"
 
 rdsMetrics = ["CPUUtilization","FreeableMemory","FreeStorageSpace","SwapUsage","WriteThroughput","ReadThroughput","WriteLatency","ReadLatency","DiskQueueDepth","CPUCreditBalance","CPUCreditUsage","DatabaseConnections","ReadIOPS","WriteIOPS","BurstBalance"]
-ec2Metrics = ["CPUUtilization","CPUCreditBalance","CPUCreditUsage","NetworkIn","NetworkOut"]
+ec2Metrics = ["CPUUtilization","CPUCreditBalance","CPUCreditUsage","NetworkIn","NetworkOut","CPUSurplusCreditsCharged","CPUSurplusCreditBalance"]
 ebsMetrics = ["BurstBalance","VolumeQueueLength","VolumeWriteOps","VolumeReadOps","VolumeWriteBytes","VolumeReadBytes"]
 sqsMetrics = ["NumberOfEmptyReceives", "ApproximateAgeOfOldestMessage", "NumberOfMessagesSent", "ApproximateNumberOfMessagesNotVisible", "ApproximateNumberOfMessagesDelayed", "ApproximateNumberOfMessagesVisible", "NumberOfMessagesDeleted", "NumberOfMessagesReceived", "SentMessageSize"]
 
@@ -464,7 +464,7 @@ def awsExec(sess,mode,query,prefix,additional):
             except:
                 s3DateBack=0
             else:
-                s3DateBack=sAdditional[2]
+                s3DateBack=int(sAdditional[2])
             jdoc = res.list_objects_v2(Bucket=s3Bucket,Prefix=s3Prefix)
             rDesc={}
             rDesc["count"]=0
@@ -477,11 +477,18 @@ def awsExec(sess,mode,query,prefix,additional):
             else:
                 for x in range(len(jdoc["Contents"])):
                     s3Date=str(re.split(' ',str(jdoc["Contents"][x]["LastModified"]))[0])
-                    dateBack=str(datetime.date.today() - datetime.timedelta(days=int(s3DateBack)))
-                    if (s3Date == dateBack):
+                    dateBackA=str(datetime.date.today() - datetime.timedelta(days=int(s3DateBack)))
+                    if s3DateBack==1:
+                        dateBackB=str(datetime.date.today() - datetime.timedelta(days=int(s3DateBack-1)))
+                    else:
+                        dateBackB=dateBackA
+                    print(s3Date,"==",dateBackA)
+                    print(s3Date,"==",dateBackB)
+                    if s3Date == dateBackA or s3Date == dateBackB:
                         rDesc["count"]+=1
                         rDesc["size"]+=jdoc["Contents"][x]["Size"]
                         rDesc["files"].append(str(jdoc["Contents"][x]["Key"]))
+                        break
             print(json.dumps(rDesc, indent="\t"))
         else:
             about(3)
