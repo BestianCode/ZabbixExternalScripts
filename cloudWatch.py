@@ -98,7 +98,7 @@ v",appVersion,"\n \
 		getTGInfo		-a 'ELBName,TargetGroupName'\n \
 \n \
 	s3\n \
-		getLatestFiles		-a 'Bucket,Mask,DaysBack'\n \
+		getLatestFiles		-a 'Bucket,Prefix,DaysBack,Suffix'\n \
 \n \
 	sqs\n \
 		getList			[-a 'Part of a queue name']\n \
@@ -465,6 +465,12 @@ def awsExec(sess,mode,query,prefix,additional):
                 s3DateBack=0
             else:
                 s3DateBack=int(sAdditional[2])
+            try:
+                sAdditional[3]
+            except:
+                s3Suffix=""
+            else:
+                s3Suffix=sAdditional[3]
             jdoc = res.list_objects_v2(Bucket=s3Bucket,Prefix=s3Prefix)
             rDesc={}
             rDesc["count"]=0
@@ -476,17 +482,18 @@ def awsExec(sess,mode,query,prefix,additional):
                 pass
             else:
                 for x in range(len(jdoc["Contents"])):
-                    s3Date=str(re.split(' ',str(jdoc["Contents"][x]["LastModified"]))[0])
-                    dateBackA=str(datetime.date.today() - datetime.timedelta(days=int(s3DateBack)))
-                    if s3DateBack==1:
-                        dateBackB=str(datetime.date.today() - datetime.timedelta(days=int(s3DateBack-1)))
-                    else:
-                        dateBackB=dateBackA
-                    if s3Date == dateBackA or s3Date == dateBackB:
-                        rDesc["count"]+=1
-                        rDesc["size"]+=jdoc["Contents"][x]["Size"]
-                        rDesc["files"].append(str(jdoc["Contents"][x]["Key"]))
-                        break
+                    if str(s3Suffix) in str(jdoc["Contents"][x]["Key"]):
+                        s3Date=str(re.split(' ',str(jdoc["Contents"][x]["LastModified"]))[0])
+                        dateBackA=str(datetime.date.today() - datetime.timedelta(days=int(s3DateBack)))
+                        if s3DateBack==1:
+                            dateBackB=str(datetime.date.today() - datetime.timedelta(days=int(s3DateBack-1)))
+                        else:
+                            dateBackB=dateBackA
+                        if s3Date == dateBackA or s3Date == dateBackB:
+                            rDesc["count"]+=1
+                            rDesc["size"]+=jdoc["Contents"][x]["Size"]
+                            rDesc["files"].append(str(jdoc["Contents"][x]["Key"]))
+                            break
             print(json.dumps(rDesc, indent="\t"))
         else:
             about(3)
